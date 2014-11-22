@@ -36,13 +36,32 @@ They will go to the virtual environnement you just previously. From here on you 
 
     $ cd hamster-to-harvest
     $ source venv/bin/activate
-    $ python TODO
+    $ python hamster-migrate.py ... TODO ...
 
 ### Cleanup
 
 By the end of your work session, remember to deactivate the virtual environment:
 
     $ deactivate
+
+## Rationale
+
+TODO
+
+## References
+
+* [hamster-sqlite](https://pypi.python.org/pypi/hamster-sqlite/0.3) API documentation: have a look at the source of [storage.py](https://github.com/projecthamster/hamster/blob/master/src/hamster/storage/storage.py); the package actually wraps `db.py` and `storage.py` from the [Hamster sources](https://github.com/projecthamster/hamster/tree/master/src/hamster/storage) and `storage.py` describes the interface
+
+## So long
+
+I'll be missing Hamster.
+
+````
+        #this is most essential
+        if any([b in activity for b in ("bbq", "barbeque", "barbecue")]) and "omg" in activity:
+            self.ponies = True
+            self.description = "[ponies = 1], [rainbows = 0]"
+````
 
 ## License
 
