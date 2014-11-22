@@ -36,7 +36,7 @@ They will go to the virtual environnement you just previously. From here on you 
 
     $ cd hamster-to-harvest
     $ source venv/bin/activate
-    $ python hamster-migrate.py ... TODO ...
+    $ python hamster-migrate.py --help
 
 ### Cleanup
 
