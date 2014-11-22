@@ -3,6 +3,7 @@
 
 import sys, logging, datetime
 import hamster.db
+import harvestapi
 import cli, config
 
 logging.basicConfig( level=logging.INFO)
@@ -30,6 +31,14 @@ def main( argv):
   storage = hamster.db.Storage( database_dir=hamster_db_dir)
 
   list_facts( storage, args['from'], args['to'], args['search'])
+
+  harvest_url = cfg.get( 'Harvest', 'url')
+  harvest_email = cfg.get( 'Harvest', 'email')
+  harvest_pwd = cfg.get( 'Harvest', 'password')
+  logger.info( "Accessing Harvest timesheet at {harvest_url}".format( harvest_url=harvest_url))
+  harvest = harvestapi.Harvest( harvest_url, harvest_email, harvest_pwd)
+
+  print( harvest.get_today())
 
 if __name__ == '__main__':
   main( sys.argv[1:])

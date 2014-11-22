@@ -51,6 +51,7 @@ TODO
 ## References
 
 * [hamster-sqlite](https://pypi.python.org/pypi/hamster-sqlite/0.3) API documentation: have a look at the source of [storage.py](https://github.com/projecthamster/hamster/blob/master/src/hamster/storage/storage.py); the package actually wraps `db.py` and `storage.py` from the [Hamster sources](https://github.com/projecthamster/hamster/tree/master/src/hamster/storage) and `storage.py` describes the interface
+* [Harvest Time Tracking API](https://github.com/harvesthq/api/blob/master/Sections/Time%20Tracking.md)
 
 ## So long
 
