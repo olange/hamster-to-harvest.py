@@ -2,6 +2,10 @@
 
 A utility script written in Python to migrate [Hamster](http://projecthamster.wordpress.com/about/) time tracking entries to the [Harvest](https://www.getharvest.com) time tracking web service.
 
+## Status
+
+Currently a work-in-progress, in pre-alpha stage.
+
 ## Installation
 
 ### Download the migration script
