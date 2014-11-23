@@ -1,6 +1,6 @@
 # Hamster to Harvest
 
-A utility script to migrate Hamster time tracking entries to Harvest.
+A utility script written in Python to migrate [Hamster](http://projecthamster.wordpress.com/about/) time tracking entries to the [Harvest](https://www.getharvest.com) time tracking web service.
 
 ## Installation
 
@@ -63,7 +63,15 @@ By the end of your work session, remember to deactivate the virtual environment:
 
 ## Rationale
 
-TODO
+Hamster having no bulk edit feature, marking time entries as being invoiced was impractical to me. And the reporting was missing a few features I needed for my invoicing.
+
+Hamster being written in Python, and me liking it, I wrote a Python batch script to switch an `uninvoiced` tag to `invoiced` – and also wrote my own reporting template.
+
+Yet it remained tedious for each and every invoice. I had to fix encoding and formatting in the invoices, despite having written a custom template.
+
+Lacking time to contribute changes to the codebase, one day I switched to the Harvest web service.
+
+Recently, I needed to consolidate all time entries from Harvest, Hamster and another system I was using. As Hamster is currently not maintained (see Toms Bauģis' [announcement of 18.08.2014](https://github.com/projecthamster/hamster/blob/9aa618b023f89684526dfd816ef8aeabdce360bf/README.textile)), it was clear the target of the consolidation was going to be Harvest. Hence the need for this migration script.
 
 ## References
 
@@ -72,7 +80,7 @@ TODO
 
 ## So long
 
-I'll be missing Hamster.
+I'll be missing Hamster. The applet had a nicely designed user interface and the authors a unique and distinctive voice, that could be appreciated on the blog or found in the sources.
 
 ````
         #this is most essential
