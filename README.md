@@ -35,6 +35,14 @@ They will go to the virtual environnement you created previously. From here on y
     $ cd hamster-to-harvest
     $ source venv/bin/activate
 
+### Configure
+
+Create a configuration file `hamster-migrate.cfg` from the template:
+
+    $ cp hamster-migrate.cfg.sample hamster-migrate.cfg
+
+and define the Harvest authentication credentials in `hamster-migrate.cfg`.
+
 ### Getting help
 
     $ python hamster-migrate.py --help
