@@ -37,11 +37,19 @@ They will go to the virtual environnement you created previously. From here on y
 
 ### Configure
 
-Create a configuration file `hamster-migrate.cfg` from the template:
+First, create a configuration file `hamster-migrate.cfg` from the template:
 
     $ cp hamster-migrate.cfg.sample hamster-migrate.cfg
 
-and define the Harvest authentication credentials in `hamster-migrate.cfg`.
+and setup your Harvest authentication credentials in `hamster-migrate.cfg`.
+
+Then, place a copy of your Hamster database into the `data/` subfolder. The database should be named `hamster.db`.
+
+Alternatively, you could change the `database-dir` configuration option in the `[Hamster]` section of the configuration to point to your Hamster applet live database; on Ubuntu, you'd define it like this:
+
+    [Hamster]
+    database-dir = ~/.local/share/hamster-applet
+    ...
 
 ### Getting help
 
