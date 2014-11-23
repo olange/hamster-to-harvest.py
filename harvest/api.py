@@ -3,7 +3,8 @@
 
 # Carbon copy of https://github.com/lionheart/python-harvest/blob/master/harvest/harvest.py
 # because I didn't manage to retrieve it with 'pip install Harvest-Time-Tracking-API-Client'
-# (pip does not find any sources)
+# (pip does not find any sources, see https://github.com/lionheart/python-harvest/issues/2)
+# So I reproduced the script here; credit and copyright go to Alex Goretoy, the author.
 
 import requests
 from requests.auth import HTTPBasicAuth
