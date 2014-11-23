@@ -4,38 +4,39 @@ A utility script to migrate Hamster time tracking entries to Harvest.
 
 ## Installation
 
-### Clone the migration script
+### Download the migration script
 
     $ git clone git@github.com:olange/hamster-to-harvest.git
 
-### Setup virtual environment
+### Setup a Python virtual environment
 
-This script uses a [Python Virtual Environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) to keep your Python system installation clean.
-
-If you're not using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) yet, install it first:
+If you're not using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) yet, I'd recommend you to install it first; it will keep your Python system installation clean:
 
     $ pip install virtualenv
 
-Go to the migration script home folder, create a fresh virtual environment and activate it (below it is named `venv`, but you can name the environment as you like):
+Then go to the migration script home folder, create a fresh virtual environment and activate it (below it is named `venv`, but you can name the environment as you like):
 
     $ cd hamster-to-harvest
     $ virtualenv venv
     $ source venv/bin/activate
 
-### Download dependencies
+### Install dependencies
 
-Finally, retrieve and install the project dependencies:
+Retrieve and install the project dependencies:
 
     $ pip install -r requirements.txt
 
-They will go to the virtual environnement you just previously. From here on you can run the migration script.
+They will go to the virtual environnement you created previously. From here on you can run the migration script.
 
 ## Execution
 
-### Running the script
+### Setup
 
     $ cd hamster-to-harvest
     $ source venv/bin/activate
+
+### Getting help
+
     $ python hamster-migrate.py --help
 
 ### Cleanup
@@ -50,8 +51,8 @@ TODO
 
 ## References
 
-* [hamster-sqlite](https://pypi.python.org/pypi/hamster-sqlite/0.3) API documentation: have a look at the source of [storage.py](https://github.com/projecthamster/hamster/blob/master/src/hamster/storage/storage.py); the package actually wraps `db.py` and `storage.py` from the [Hamster sources](https://github.com/projecthamster/hamster/tree/master/src/hamster/storage) and `storage.py` describes the interface
-* [Harvest Time Tracking API](https://github.com/harvesthq/api/blob/master/Sections/Time%20Tracking.md)
+* [Harvest API](https://github.com/harvesthq/api)
+* API documentation of the [hamster-sqlite](https://pypi.python.org/pypi/hamster-sqlite/0.3) package: have a look at the source of [storage.py](https://github.com/projecthamster/hamster/blob/master/src/hamster/storage/storage.py); the package actually wraps `db.py` and `storage.py` from the [Hamster sources](https://github.com/projecthamster/hamster/tree/master/src/hamster/storage)
 
 ## So long
 
