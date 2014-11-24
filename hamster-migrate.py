@@ -4,7 +4,7 @@
 from __future__ import print_function
 import sys, codecs, logging, datetime
 import hamster.db
-import harvest.api
+import api.harvest
 import cli, config
 
 logging.basicConfig( level=logging.INFO)
@@ -59,7 +59,7 @@ def seed( args, cfg):
   harvest_email = cfg.get( "Harvest", "email")
   harvest_pwd = cfg.get( "Harvest", "password")
   logger.info( u"Accessing Harvest timesheet at {0}".format( harvest_url))
-  harvest_client = harvest.api.Harvest( harvest_url, harvest_email, harvest_pwd)
+  harvest_client = api.harvest.Harvest( harvest_url, harvest_email, harvest_pwd)
   with codecs.open( "harvest-ids.txt", encoding='utf-8', mode='wb') as harvest_ids_file:
     dump_projects_and_tasks( harvest_client, harvest_ids_file)
 

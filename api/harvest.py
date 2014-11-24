@@ -1,9 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf_8 -*-
 
 # Carbon copy of https://github.com/lann/Harvest/blob/master/harvest.py
 # because it was not available for installation with 'pip install'
-# So I reproduced its contents; credit go to the authors.
+# So I reproduced its contents; credits go to the authors of the library.
 
 '''
 See http://www.getharvest.com/api
