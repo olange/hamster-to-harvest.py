@@ -49,7 +49,7 @@ class Harvest(object):
                     r = requests.get(url)
 
             try:
-                return r.json
+                return r.json()
             except Exception as e:
                 raise HarvestError(e)
 
