@@ -1,3 +1,6 @@
+# Hamster database
+data/hamster.db
+
 # Virtual Environment subfolder
 venv/
 
