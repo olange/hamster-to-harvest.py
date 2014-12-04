@@ -17,6 +17,10 @@ def seed( args, opts):
   with codecs.open( "harvest-ids.txt", encoding='utf-8', mode='wb') as harvest_ids_file:
     commands.seed.dump_projects_and_tasks( harvest_client, harvest_ids_file)
 
+def explore( args, opts):
+  storage = hamster.db.Storage( database_dir=opts.get( "Hamster", "database-dir"))
+  commands.explore.list_facts( storage, args.start, args.end, args.search)
+
 def migrate( args, opts):
   hamster_db_dir = opts.get( "Hamster", "database-dir")
   harvest_url = opts.get( "Harvest", "url")
