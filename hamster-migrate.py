@@ -18,17 +18,30 @@ def seed( args, opts):
     commands.seed.dump_projects_and_tasks( harvest_client, harvest_ids_file)
 
 def migrate( args, opts):
+  hamster_db_dir = opts.get( "Hamster", "database-dir")
   harvest_url = opts.get( "Harvest", "url")
   harvest_email = opts.get( "Harvest", "email")
   harvest_pwd = opts.get( "Harvest", "password")
-  logger.info( u"Accessing Harvest timesheet at {0}".format( harvest_url))
-  harvest_client = api.harvest_time_tracking.Harvest( harvest_url, harvest_email, harvest_pwd)
-  logger.info( harvest_client.get_today())
 
-  hamster_db_dir = opts.get( "Hamster", "database-dir")
-  logger.info( u"Reading Hamster time entries from {0}".format( hamster_db_dir))
+  print( u"Accessing Harvest timesheet at {0}".format( harvest_url))
+  harvest_tt_api = api.harvest_time_tracking.Harvest( harvest_url, harvest_email, harvest_pwd)
+
+  print( u"Retrieving Hamster time entries from {0}".format( hamster_db_dir))
   storage = hamster.db.Storage( database_dir=hamster_db_dir)
-  commands.migrate.list_facts( storage, args.start, args.end, args.search)
+
+  start_date = args.start
+  end_date = args.end
+  search_terms = args.search
+  facts = storage.get_facts( start_date, end_date, search_terms)
+  print( u"Found {0} time entries matching '{1}' between {2} and {3} ..."
+          .format( len( facts), search_terms, start_date, end_date))
+
+  for fact in facts:
+    task = commands.migrate.fact_to_task( fact)
+    print( u"Uploading {0}".format( task))
+    commands.migrate.upload_task( harvest_tt_api, task)
+
+  print "Done."
 
 def main( argv):
   """Parse the command-line args and call the function matching
