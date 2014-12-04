@@ -1,8 +1,14 @@
 # Hamster database
 data/hamster.db
 
+# Script configuration file
+hamster-migrate.cfg
+
 # Virtual Environment subfolder
 venv/
+
+# Sublime Text descriptors
+*.sublime-*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -59,4 +65,3 @@ docs/_build/
 # PyBuilder
 target/
 
-hamster-migrate.cfg
