@@ -1,5 +1,5 @@
 [Hamster]
-database-dir = ./data
+database-dir = ./data/in
 
 [Harvest]
 url = https://MY-ACCOUNT.harvestapp.com

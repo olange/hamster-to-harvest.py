@@ -1,5 +1,6 @@
-# Hamster database
-data/hamster.db
+# Hamster database and output files
+data/in/*.db
+data/out/**
 
 # Script configuration file
 hamster-migrate.cfg
