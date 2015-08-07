@@ -3,7 +3,7 @@
 
 import sys, codecs, logging, datetime
 import hamster.db, api.harvest, api.harvest_time_tracking
-import cli, options, commands
+import options, commands
 
 logging.basicConfig( level=logging.INFO)
 logger = logging.getLogger( __name__)
@@ -55,9 +55,9 @@ def migrate( args, opts):
 def main( argv):
   """Parse the command-line args and call the function matching
   the subcommand that was selected."""
-  opts = options.read( "hamster-migrate.cfg")
+  opts = options.opts.read( "hamster-migrate.cfg")
 
-  args = cli.parser.parse_args( argv)
+  args = options.cli.parser.parse_args( argv)
   logger.info( args)
 
   subcommands = { "seed": seed, "migrate": migrate }
