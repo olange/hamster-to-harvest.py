@@ -1,6 +1,7 @@
 # Hamster database and output files
 data/in/*.db
 data/out/**
+harvest-ids.txt
 
 # Script configuration file
 hamster-migrate.cfg
