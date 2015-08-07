@@ -84,13 +84,27 @@ Recently, I needed to consolidate all time entries from Harvest, Hamster and ano
 
 ## So long
 
-I'll be missing Hamster. The applet had a nicely designed user interface and the authors a unique and distinctive voice, that could be appreciated on the blog or found in the sources.
+I'll be missing Hamster. The applet had a nicely designed user interface. It evolved in interesting graphical and user interface experiments. There was an irreverent, creative and cheerful tone within that project.
 
 ````
         #this is most essential
         if any([b in activity for b in ("bbq", "barbeque", "barbecue")]) and "omg" in activity:
             self.ponies = True
             self.description = "[ponies = 1], [rainbows = 0]"
+````
+
+## Goodies
+
+[hamster-update.py](goodies/hamster-update.py) is a script that rewrites tags on Hamster facts. The operations are hardcoded, you would need to change them, as well as the query criterias (date range, projects) within the script itself.
+
+[harvest-projects-and-tasks-list.py](goodies/harvest-projects-and-tasks-list.py) is a simple code fragment to retrieve the list of projects and tasks from the Harvest API. You get the same by running `python hamster-migrate.py seed`.
+
+## Known issues
+
+The following message might be displayed when running the `hamster-migrate.py` script on machines with an OS other than Ubuntu; the Hamster Python library is looking for another library `gio`, available with Ubuntu only. You can safely ignore this message:
+
+````
+WARNING:root:Could not import gio - requires pygobject. File monitoring will be disabled
 ````
 
 ## License
