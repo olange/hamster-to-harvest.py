@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="hamster-applet" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <title>$title</title>
+    <style type="text/css">
+        body {
+            font-family: "sans-serif";
+            font-size: 12px;
+            padding: 12px;
+            color: #303030;
+        }
+
+        h1 { margin-top: 0; }
+
+        h2 {
+            margin-top: 2em;
+            border-bottom: 2px solid #303030;
+        }
+
+        th, td {
+            text-align: left;
+            padding-right: 24px;
+        }
+
+        th {
+            padding-top: 12px;
+        }
+
+        .even { background-color: #eee; }
+        .odd { background-color: #fff; }
+
+        .by_day_controls { margin-bottom: 24px; }
+
+        .activity-label { color: #4f6cff; }
+
+        .category-label { color: #888; background-color: #eee; padding: 0 .5em;}
+        .category-overlay-work { }
+        .category-overlay-workNF { color: #999; }
+        .category-overlay-bénévolat { color: #ff495f; }
+        .category-overlay-personnel { color: #ffa81e; }
+
+        .tags-label { color: #888; }
+
+        td.activity_totals_row,
+        td.activity_log_row { border-top: 1px dotted #999; padding: .5em 0; }
+        td.totals_row { border-top: 1px solid #999; padding: .5em 0; }
+    </style>
+
+    <style type="text/css" media="print">
+        div#tabs ul { display: none; }
+
+        div#tabs { border: none; }
+
+        div.by_day_controls { display: none; }
+
+        p.template-instructions { display: none; }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tabs").tabs()
+
+            $("#show_details").click(function() {
+                if ($(this).attr("checked")) {
+                    $(".by_date_row").show();
+                } else {
+                    $(".by_date_row").hide();
+                }
+            })
+
+            $("#show_totals").click(function() {
+                if ($(this).attr("checked")) {
+                    $(".by_date_total_row").show();
+                } else {
+                    $(".by_date_total_row").hide();
+                }
+            })
+        });
+    </script>
+  </head>
+  <body>
+
+    <h1>$title</h1>
+
+    <div id="tabs">
+      <ul>
+        <li>
+          <a href="#tabs-1">$totals_by_day_title</a>
+        </li>
+        <li>
+          <a href="#tabs-2">$activity_log_title</a>
+        </li>
+      </ul>
+      <div id="tabs-1">
+        <div class="by_day_controls">
+                $show_prompt
+                <input type="checkbox" id="show_details" checked="checked"></input>
+          <label for="show_details">$activity_totals_heading</label>
+
+          <input type="checkbox" id="show_totals" checked="checked"></input>
+          <label for="show_totals">$category_totals_heading</label>
+        </div>
+
+        <table class="activity_totals">
+          <col width="20%" />
+          <col width="45%" />
+          <col width="35%" />
+          <tr>
+            <th>Date</th>
+            <th class="by_date_row">$activity_totals_heading</th>
+            <th class="by_date_total_row">$category_totals_heading</th>
+          </tr>
+
+          <by_date>
+            <tr valign="top">
+              <td class="activity_totals_row">$date</td>
+              <td class="activity_totals_row by_date_row">
+                <table width="100%">
+                  <by_date_activity>
+                    <tr class="category-overlay-${category}">
+                      <td><span class="activity-label">$activity</span>
+                        <span class="category-label">$category</span>
+                      </td>
+                      <td style="text-align: right" comment="there is also duration_decimal and duration_minutes">
+                          <strong>$duration</strong>
+                      </td>
+                    </tr>
+                  </by_date_activity>
+                </table>
+              </td>
+              <td class="activity_totals_row by_date_total_row">
+                <table width="100%">
+                  <by_date_category>
+                    <tr class="category-overlay-${category}">
+                      <td><span class="category-label">$category</span></td>
+                      <td style="text-align: right" comment="there is also duration_decimal and duration_minutes">
+                          <strong>$duration</strong>
+                      </td>
+                    </tr>
+                  </by_date_category>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">&nbsp;</td>
+            </tr>
+          </by_date>
+        </table>
+      </div>
+      <div id="tabs-2">
+        <table class="activity_log">
+          <col width="12%" />
+          <col width="24%" />
+          <col width="11%"  />
+          <col width="53%" />
+          <tr>
+            <th>$header_date</th>
+            <th>$header_activity</th>
+            <!-- <th>$header_category</th>
+            <th>$header_tags</th> -->
+            <!-- <th>$header_start</th>
+            <th>$header_end</th> -->
+            <th>$header_duration</th>
+            <th>$header_description</th>
+          </tr>
+          <all_activities>
+            <tr class="category-overlay-${category}">
+              <td class="activity_log_row" comment="there is also date_iso">
+                  $date
+              </td>
+              <td class="activity_log_row"><span class="activity-label">$activity</span>
+                <span class="category-label">$category</span><br/>
+                <span class="tags-label">$tags</span></td>
+              <!-- <td>$category</td> -->
+              <!-- <td comment="there is also start_iso">$start</td>
+              <td comment="there is also end_iso">$end</td> -->
+              <td class="activity_log_row" comment="there is also duration_decimal and duration_minutes">
+                  <strong>$duration</strong>
+              </td>
+              <td class="activity_log_row">$description</td>
+            </tr>
+          </all_activities>
+
+            <!-- <tr>
+              <td class="totals_row"><strong>Totaux</strong></td>
+              <td class="totals_row">
+                <strong class="activity-label">PROJname</strong></td>
+              <td class="totals_row">
+                <strong>56 h 40 min</strong>
+              </td>
+              <td class="totals_row">
+                <span class="category-label">work</span> <strong>44 h 10 min</strong>
+                <span class="category-label">nonFacturé</span> <strong>12 h 30 min</strong>
+              </td>
+            </tr> -->
+        </table>
+      </div>
+    </div>
+
+<!-- <p class="template-instructions"><a href="file:///$data_dir/report_template.html">$show_template</a>. $template_instructions.</p> -->
+  </body>
+</html>

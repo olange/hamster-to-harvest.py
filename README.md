@@ -4,7 +4,7 @@ A utility script written in Python to migrate [Hamster](http://projecthamster.wo
 
 ## Status
 
-Currently a work-in-progress, in pre-alpha stage.
+Alpha stage. It is possible to migrate tasks from Hamster to Harvest, but the migration operations must be hardcoded within the [commands/migrate.py](commands/migrate.py) script.
 
 ## Installation
 
@@ -67,15 +67,9 @@ By the end of your work session, remember to deactivate the virtual environment:
 
 ## Rationale
 
-Hamster having no bulk edit feature, marking time entries as being invoiced was impractical to me. And the reporting was missing a few features I needed for my invoicing.
+Recently, I needed to consolidate all time entries from Harvest, Hamster and another system I was using. As Hamster is currently not maintained (see Toms Bauģis' [announcement of 18.08.2014](https://github.com/projecthamster/hamster/blob/9aa618b023f89684526dfd816ef8aeabdce360bf/README.textile)), I decided to consolidate them to Harvest. Hence the need for a migration script.
 
-Hamster being written in Python, and me liking it, I wrote a Python batch script to switch an `uninvoiced` tag to `invoiced` – and also wrote my own reporting template.
-
-Yet it remained tedious for each and every invoice. I had to fix encoding and formatting in the invoices, despite having written a custom template.
-
-Lacking time to contribute changes to the codebase, one day I switched to the Harvest web service.
-
-Recently, I needed to consolidate all time entries from Harvest, Hamster and another system I was using. As Hamster is currently not maintained (see Toms Bauģis' [announcement of 18.08.2014](https://github.com/projecthamster/hamster/blob/9aa618b023f89684526dfd816ef8aeabdce360bf/README.textile)), it was clear the target of the consolidation was going to be Harvest. Hence the need for this migration script.
+I switched to Harvest because it was widely available from anywhere, and also because Hamster was missing a few key features: no bulk edit feature to mark time entries as being invoiced (I wrote a small utility script to handle this, see the goodies hereafter); and the reporting was missing a few features.
 
 ## References
 
@@ -84,7 +78,7 @@ Recently, I needed to consolidate all time entries from Harvest, Hamster and ano
 
 ## So long
 
-I'll be missing Hamster. The applet had a nicely designed user interface. It evolved in interesting graphical and user interface experiments. There was an irreverent, creative and cheerful tone within that project.
+I'll be missing Hamster. The applet had a nicely designed user interface. It evolved in interesting graphical and user interface experiments. And there was an irreverent, creative and cheerful tone in the project's communications.
 
 ````
         #this is most essential
@@ -98,6 +92,8 @@ I'll be missing Hamster. The applet had a nicely designed user interface. It evo
 [hamster-update.py](goodies/hamster-update.py) is a script that rewrites tags on Hamster facts. The operations are hardcoded, you would need to change them, as well as the query criterias (date range, projects) within the script itself.
 
 [harvest-projects-and-tasks-list.py](goodies/harvest-projects-and-tasks-list.py) is a simple code fragment to retrieve the list of projects and tasks from the Harvest API. You get the same by running `python hamster-migrate.py seed`.
+
+[report_template.html](goodies/report_template.html) is an alternative template to the one delivered with Hamster, that I used to report time and deliver with my invoices.
 
 ## Known issues
 
