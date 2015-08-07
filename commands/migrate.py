@@ -19,11 +19,26 @@ class HarvestTask():
   def __str__( self):
     return u"p{0.project_id} t{0.task_id} / {0.spent_at} {0.started_at} - {0.ended_at} / {0.note}".format( self)
 
-def task_and_project_rule( fact):
+def task_and_project_mapping( fact):
   """Given a Fact entity from Hamster, return a tuple with the task and project ids
   matching the fact attributes -- namely from its name, category and tags."""
-  task_id = 1378870       # Support
-  project_id = 6882158    # Migration Hamster
+  # Target Task
+  task_id = None
+  project_id = 6882158 # Migration Hamster
+
+  # Source Fact
+  name = fact.get( "name")
+  tags = fact.get( "tags")
+
+  # Mapping
+  if name == u"KLMwebdev":
+    project_id = 2775024
+    if u"Support" in tags:
+      task_id = 1378870
+    elif u"Publication" in tags:
+      task_id = 1680283
+    elif u"Strat\xe9gie et prospection" in tags:
+      task_id = 1680283
   return (task_id, project_id)
 
 def fact_to_task( fact):
@@ -42,11 +57,11 @@ def fact_to_task( fact):
     'delta': datetime.timedelta( 0, 1200) }
   """
   task = HarvestTask()
-  task.note = fact.get( "description", "")
-  task.spent_at = "{:%Y-%m-%d}".format( fact.get( "start_time"))
-  task.started_at = "{:%H:%M}".format( fact.get( "start_time"))
-  task.ended_at = "{:%H:%M}".format( fact.get( "end_time"))
-  task.task_id, task.project_id = task_and_project_rule( fact)
+  task.note = u"[{0}] {1}".format( fact.get("category", ""), fact.get( "description", ""))
+  task.spent_at = u"{:%Y-%m-%d}".format( fact.get( "start_time"))
+  task.started_at = u"{:%H:%M}".format( fact.get( "start_time"))
+  task.ended_at = u"{:%H:%M}".format( fact.get( "end_time"))
+  task.task_id, task.project_id = task_and_project_mapping( fact)
   return task
 
 def upload_task( harvest_time_tracking_api, task):

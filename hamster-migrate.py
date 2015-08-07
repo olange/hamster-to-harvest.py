@@ -27,9 +27,6 @@ def migrate( args, opts):
   harvest_email = opts.get( "Harvest", "email")
   harvest_pwd = opts.get( "Harvest", "password")
 
-  print( u"Accessing Harvest timesheet at {0}".format( harvest_url))
-  harvest_tt_api = api.harvest_time_tracking.Harvest( harvest_url, harvest_email, harvest_pwd)
-
   print( u"Retrieving Hamster time entries from {0}".format( hamster_db_dir))
   storage = hamster.db.Storage( database_dir=hamster_db_dir)
 
@@ -40,10 +37,18 @@ def migrate( args, opts):
   print( u"Found {0} time entries matching '{1}' between {2} and {3} ..."
           .format( len( facts), search_terms, start_date, end_date))
 
+  print( u"Accessing Harvest timesheet at {0}".format( harvest_url))
+  harvest_tt_api = api.harvest_time_tracking.Harvest( harvest_url, harvest_email, harvest_pwd)
+
   for fact in facts:
     task = commands.migrate.fact_to_task( fact)
     print( u"Uploading {0}".format( task))
-    commands.migrate.upload_task( harvest_tt_api, task)
+    result = commands.migrate.upload_task( harvest_tt_api, task)
+    if u"id" in result:
+      print u"Successfull; task was assigned ID {0}".format( result.get(u"id"))
+      # TODO: Prune entry from Hamster DB
+    else:
+      print u"Upload failed: {0}".format( result)
 
   print "Done."
 
