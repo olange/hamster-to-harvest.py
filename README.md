@@ -4,7 +4,20 @@ A utility script written in Python to migrate [Hamster](http://projecthamster.wo
 
 ## Status
 
-Alpha stage. It is possible to migrate tasks from Hamster to Harvest, but the migration operations must be hardcoded within the [commands/migrate.py](commands/migrate.py) script.
+Alpha stage. It is possible to migrate tasks from Hamster to Harvest, but the migration
+operations have to be hardcoded within the [commands/migrate.py](commands/migrate.py) script.
+
+Source is not maintained anymore. This project is an early abandoned attempt to migrate Hamster activities directly
+from its SQL database into Harvest, thru Harvest's REST API.
+
+Superceded by the [hamster-to-harvest-csv](https://github.com/olange/hamster-to-harvest-csv)
+project, which uses another approach: it converts Hamster activities exported as an XML file
+to a CSV file, ready to be imported in Harvest thru its _CSV Import_ interface, available
+online in the Harvest webapp. The CSV interface has the drawback that it cannot currently
+set the _Started at_, _Ended at_ and _Billed?_ fields, which could be defined thru
+Harvest's REST API.
+
+For Hamster users, this repo contains a few [goodies](./goodies/) that might prove useful; see below.
 
 ## Installation
 
@@ -67,9 +80,12 @@ By the end of your work session, remember to deactivate the virtual environment:
 
 ## Rationale
 
-Recently, I needed to consolidate all time entries from Harvest, Hamster and another system I was using. As Hamster is currently not maintained (see Toms Bauģis' [announcement of 18.08.2014](https://github.com/projecthamster/hamster/blob/9aa618b023f89684526dfd816ef8aeabdce360bf/README.textile)), I decided to consolidate them to Harvest. Hence the need for a migration script.
+I needed to consolidate all time entries from Harvest, Hamster and another home grown
+system I was using. As Hamster was not maintained anymore (see Toms Bauģis' [announcement
+of 18.08.2014](https://github.com/projecthamster/hamster/blob/9aa618b023f89684526dfd816ef8aeabdce360bf/README.textile)),
+I decided to consolidate them to Harvest. Hence the need for a migration script.
 
-I switched to Harvest because it was widely available from anywhere, and also because Hamster was missing a few key features: no bulk edit feature to mark time entries as being invoiced (I wrote a small utility script to handle this, see the goodies hereafter); and the reporting was missing a few features.
+I switched to Harvest because it was widely available from anywhere, and also because Hamster was missing a few key features: a bulk edit feature to mark time entries as being invoiced (I wrote a small utility script to handle this, see the goodies hereafter); and the reporting was missing a few features.
 
 ## References
 
@@ -78,7 +94,9 @@ I switched to Harvest because it was widely available from anywhere, and also be
 
 ## So long
 
-I'll be missing Hamster. The applet had a nicely designed user interface. It evolved in interesting graphical and user interface experiments. And there was an irreverent, creative and cheerful tone in the project's communications.
+I'll be missing Hamster. The applet had a nicely designed user interface. It evolved
+in interesting graphical and user interface experiments. And there was an irreverent,
+creative and cheerful tone in the project's communications.
 
 ````
         #this is most essential
