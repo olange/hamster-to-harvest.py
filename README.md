@@ -7,31 +7,36 @@ A utility script written in Python to migrate [Hamster](http://projecthamster.wo
 Alpha stage. It is possible to migrate tasks from Hamster to Harvest, but the migration
 operations have to be hardcoded within the [commands/migrate.py](commands/migrate.py) script.
 
-Source is not maintained anymore. This project is an early abandoned attempt to migrate Hamster activities directly
-from its SQL database into Harvest, thru Harvest's REST API.
+Source is not maintained anymore. This project is an early abandoned attempt to migrate
+Hamster activities directly from its SQL database into Harvest, thru Harvest's REST API.
 
-Superceded by the [hamster-to-harvest-csv](https://github.com/olange/hamster-to-harvest-csv)
-project, which uses another approach: it converts Hamster activities exported as an XML file
-to a CSV file, ready to be imported in Harvest thru its _CSV Import_ interface, available
-online in the Harvest webapp. The CSV interface has the drawback that it cannot currently
-set the _Started at_, _Ended at_ and _Billed?_ fields, which could be defined thru
-Harvest's REST API.
+Superseded by the [hamster-to-harvest](https://github.com/olange/hamster-to-harvest)
+project, which uses another approach: it converts Hamster activities exported as an
+XML file to a CSV file, ready to be imported in Harvest (thru its _CSV Import_
+interface, available online, in the Harvest webapp).
 
-For Hamster users, this repo contains a few [goodies](./goodies/) that might prove useful; see below.
+The CSV interface has the drawback that it cannot currently set the _Started at_,
+_Ended at_ and _Billed?_ fields, which could be defined thru Harvest's REST API.
+
+For Hamster users, this repo contains a few [goodies](./goodies/) that might prove
+useful; see below.
 
 ## Installation
 
 ### Download the migration script
 
-    $ git clone git@github.com:olange/hamster-to-harvest.git
+    $ git clone git@github.com:olange/hamster-to-harvest.py.git
 
 ### Setup a Python virtual environment
 
-If you're not using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) yet, I'd recommend you to install it first; it will keep your Python system installation clean:
+If you're not using [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+yet, I'd recommend you to install it first; it will keep your Python system
+installation clean:
 
     $ pip install virtualenv
 
-Then go to the migration script home folder, create a fresh virtual environment and activate it (below it is named `venv`, but you can name the environment as you like):
+Then go to the migration script home folder, create a fresh virtual environment
+and activate it (below it is named `venv`, but you can name the environment as you like):
 
     $ cd hamster-to-harvest
     $ virtualenv venv
