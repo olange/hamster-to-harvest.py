@@ -5,4 +5,4 @@ hamster-sqlite==0.3
 python-dateutil==2.2
 
 # Requirements of Python Harvest Time Tracking API
-requests==2.4.3
+requests==2.20.0
